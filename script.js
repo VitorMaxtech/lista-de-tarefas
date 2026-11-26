@@ -47,8 +47,7 @@ function renderTasks() {
     return true;
 });
 
-filteredTasks.forEach((task, index) => {
-    const originalIndex = tasks.indexOf(task);
+filteredTasks.forEach((task) => {
         const item = document.createElement("li");
 
         if (task.completed) {
