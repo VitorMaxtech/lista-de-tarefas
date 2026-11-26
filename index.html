@@ -10,26 +10,36 @@
 
     <main class="container">
         <h1>Minha Lista de Tarefas</h1>
-        <p>Organize suas atividades.</p>
+        <p class="subtitle">Organize suas atividades.</p>
+
+        <div id="storage-message" class="notice" role="alert" hidden></div>
 
         <form id="task-form">
-            <input
-                type="text"
-                id="task-input"
-                placeholder="Digite uma tarefa..."
-                autocomplete="off"
-                required
-            >
-            <button type="submit">Adicionar</button>
+            <label for="task-input" class="field-label">Nova tarefa</label>
+            <div class="form-row">
+                <input
+                    type="text"
+                    id="task-input"
+                    name="task"
+                    placeholder="Digite uma tarefa..."
+                    maxlength="100"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" class="btn-primary">Adicionar</button>
+            </div>
         </form>
 
-        <ul id="task-list"></ul>
-        <div id="task-counter"></div>
-        <div id="task-filters">
-    <button class="active" data-filter="all">Todas</button>
-    <button data-filter="pending">Pendentes</button>
-    <button data-filter="completed">Concluídas</button>
-</div>
+        <div id="task-filters" role="group" aria-label="Filtrar tarefas">
+            <button type="button" class="active" data-filter="all" aria-pressed="true">Todas</button>
+            <button type="button" data-filter="pending" aria-pressed="false">Pendentes</button>
+            <button type="button" data-filter="completed" aria-pressed="false">Concluídas</button>
+        </div>
+
+        <p id="task-counter" class="counter" role="status" aria-atomic="true"></p>
+
+        <ul id="task-list" role="list" aria-label="Lista de tarefas"></ul>
+        <p id="task-empty" class="empty-state" hidden></p>
     </main>
 
     <script src="script.js"></script>
