@@ -25,6 +25,10 @@ A web application developed to organize daily tasks, allowing users to add, comp
 
 No dependencies need to be installed, and no server configuration is required.
 
+## Tests
+
+With Node.js 18 or later installed, run `npm test` in the project folder. The tests use Node's built-in runner (`node --test`), with no dependencies.
+
 ---
 
 [Português](README.md)

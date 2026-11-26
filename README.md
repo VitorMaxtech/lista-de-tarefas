@@ -25,6 +25,10 @@ Uma aplicação web desenvolvida para organizar tarefas diárias, permitindo adi
 
 Não é necessário instalar dependências ou configurar um servidor.
 
+#### Testes
+
+Com o Node.js 18 ou superior instalado, rode `npm test` na pasta do projeto. Os testes usam o executor nativo do Node (`node --test`), sem dependências.
+
 
 ---
 

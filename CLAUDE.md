@@ -9,7 +9,8 @@ A to-do list app in plain HTML/CSS/JavaScript with no build step, framework or d
 ## Running
 
 - Open `index.html` directly in a browser, or serve the folder statically (e.g. `npx serve .` or `python3 -m http.server`).
-- There are no tests or linter. `package.json` is the default `npm init` stub, and `npm test` just exits with an error.
+- Tests: `npm test` (runs `node --test`, Node 18+, no dependencies). Run one file with `node --test tests/storage.test.js`, or one test with `node --test --test-name-pattern="<nome>"`. There is no linter.
+- `tests/harness.js` loads `script.js` into a `node:vm` context with a fake DOM and an in-memory `localStorage` (modes `getThrows`, `setThrowsAll`, `setThrowsPrefix`, `maxBackups`, `noCrypto`). Top-level `let`/`const` are not context properties, so read them with `app.get("tasks")`. Values from the VM come from another realm: wrap them with `plain()` before `deepEqual`. The fake DOM has no real rendering, focus or CSS, so check those in a browser. If `script.js` starts using a new DOM API, add it to the stub in `createElement()`.
 - Quick syntax check: `node --check script.js`
 
 ## Architecture
