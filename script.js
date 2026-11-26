@@ -187,8 +187,13 @@ function backupRawData(raw) {
         suffix++;
     }
 
+    // Pruning first frees space if the quota is full; retry once.
     if (!safeSetItem(key, raw)) {
-        return null;
+        pruneBackups(key);
+
+        if (!safeSetItem(key, raw)) {
+            return null;
+        }
     }
 
     pruneBackups(key);
@@ -574,6 +579,12 @@ form.addEventListener("submit", (event) => {
     if (addTask(input.value)) {
         saveTasks();
         input.value = "";
+
+        // A new task is pending, so it would be hidden by this filter.
+        if (currentFilter === "completed") {
+            currentFilter = "all";
+        }
+
         renderTasks();
     } else {
         input.value = "";
