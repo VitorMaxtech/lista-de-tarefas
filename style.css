@@ -87,3 +87,8 @@ li.completed span {
 .delete-button:hover {
     background: #b91c1c;
 }
+#task-filters button.active {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
